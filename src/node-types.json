@@ -304,10 +304,6 @@
         "named": true
       },
       {
-        "type": "macro_type_specifier",
-        "named": true
-      },
-      {
         "type": "primitive_type",
         "named": true
       },
@@ -1524,17 +1520,7 @@
   {
     "type": "extension_expression",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "expression",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "field_declaration",
@@ -1742,7 +1728,7 @@
     "fields": {
       "declarator": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "_declarator",
@@ -1760,7 +1746,7 @@
       },
       "parameters": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "parameter_list",
@@ -1778,15 +1764,11 @@
           "named": true
         },
         {
-          "type": "call_expression",
+          "type": "function_declarator",
           "named": true
         },
         {
           "type": "gnu_asm_expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
           "named": true
         }
       ]
@@ -2289,32 +2271,6 @@
         "types": [
           {
             "type": "string_literal",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "macro_type_specifier",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "type_descriptor",
             "named": true
           }
         ]
@@ -3773,17 +3729,7 @@
   {
     "type": "type_qualifier",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "unary_expression",
