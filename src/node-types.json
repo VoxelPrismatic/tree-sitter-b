@@ -1121,10 +1121,6 @@
           "named": true
         },
         {
-          "type": "linkage_specification",
-          "named": true
-        },
-        {
           "type": "preproc_call",
           "named": true
         },
@@ -1300,65 +1296,6 @@
     }
   },
   {
-    "type": "declaration_list",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "declaration",
-          "named": true
-        },
-        {
-          "type": "function_definition",
-          "named": true
-        },
-        {
-          "type": "linkage_specification",
-          "named": true
-        },
-        {
-          "type": "preproc_call",
-          "named": true
-        },
-        {
-          "type": "preproc_def",
-          "named": true
-        },
-        {
-          "type": "preproc_function_def",
-          "named": true
-        },
-        {
-          "type": "preproc_if",
-          "named": true
-        },
-        {
-          "type": "preproc_ifdef",
-          "named": true
-        },
-        {
-          "type": "preproc_include",
-          "named": true
-        },
-        {
-          "type": "statement",
-          "named": true
-        },
-        {
-          "type": "type_definition",
-          "named": true
-        },
-        {
-          "type": "type_specifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "do_statement",
     "named": true,
     "fields": {
@@ -1512,6 +1449,10 @@
         },
         {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "type_qualifier",
           "named": true
         }
       ]
@@ -2244,40 +2185,6 @@
     }
   },
   {
-    "type": "linkage_specification",
-    "named": true,
-    "fields": {
-      "body": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "declaration",
-            "named": true
-          },
-          {
-            "type": "declaration_list",
-            "named": true
-          },
-          {
-            "type": "function_definition",
-            "named": true
-          }
-        ]
-      },
-      "value": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "string_literal",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "ms_based_modifier",
     "named": true,
     "fields": {},
@@ -2725,10 +2632,6 @@
           "named": true
         },
         {
-          "type": "linkage_specification",
-          "named": true
-        },
-        {
           "type": "preproc_call",
           "named": true
         },
@@ -2821,10 +2724,6 @@
           "named": true
         },
         {
-          "type": "linkage_specification",
-          "named": true
-        },
-        {
           "type": "preproc_call",
           "named": true
         },
@@ -2885,10 +2784,6 @@
         },
         {
           "type": "function_definition",
-          "named": true
-        },
-        {
-          "type": "linkage_specification",
           "named": true
         },
         {
@@ -3048,10 +2943,6 @@
           "named": true
         },
         {
-          "type": "linkage_specification",
-          "named": true
-        },
-        {
           "type": "preproc_call",
           "named": true
         },
@@ -3141,10 +3032,6 @@
         },
         {
           "type": "function_definition",
-          "named": true
-        },
-        {
-          "type": "linkage_specification",
           "named": true
         },
         {
@@ -3597,10 +3484,6 @@
         },
         {
           "type": "labeled_statement",
-          "named": true
-        },
-        {
-          "type": "linkage_specification",
           "named": true
         },
         {
