@@ -33,7 +33,7 @@ const PREC = {
 };
 
 module.exports = grammar({
-  name: 'c',
+  name: 'b',
 
   conflicts: $ => [
     [$.type_specifier, $._declarator],
