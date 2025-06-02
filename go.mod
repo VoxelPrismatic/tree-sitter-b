@@ -1,4 +1,4 @@
-module github.com/tree-sitter/tree-sitter-c
+module github.com/voxelprismatic/tree-sitter-b
 
 go 1.22
 

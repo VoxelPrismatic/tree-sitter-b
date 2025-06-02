@@ -3,10 +3,10 @@ requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "tree-sitter-c"
+name = "tree-sitter-b"
 description = "C grammar for tree-sitter"
-version = "0.24.1"
-keywords = ["incremental", "parsing", "tree-sitter", "c"]
+version = "0.1.0"
+keywords = ["incremental", "parsing", "tree-sitter", "b"]
 classifiers = [
   "Intended Audience :: Developers",
   "License :: OSI Approved :: MIT License",
@@ -17,13 +17,14 @@ classifiers = [
 authors = [
   { name = "Max Brunsfeld", email = "maxbrunsfeld@gmail.com" },
   { name = "Amaan Qureshi", email = "amaanq12@gmail.com" },
+  { name = "VoxelPrismatic", email = "voxelprismatic@pm.me"
 ]
 requires-python = ">=3.10"
 license.text = "MIT"
 readme = "README.md"
 
 [project.urls]
-Homepage = "https://github.com/tree-sitter/tree-sitter-c"
+Homepage = "https://github.com/voxelprismatic/tree-sitter-b"
 
 [project.optional-dependencies]
 core = ["tree-sitter~=0.24"]

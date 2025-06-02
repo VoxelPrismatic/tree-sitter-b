@@ -12,10 +12,10 @@
 //! }
 //! "#;
 //! let mut parser = Parser::new();
-//! let language = tree_sitter_c::LANGUAGE;
+//! let language = tree_sitter_b::LANGUAGE;
 //! parser
 //!     .set_language(&language.into())
-//!     .expect("Error loading C parser");
+//!     .expect("Error loading B parser");
 //! let tree = parser.parse(code, None).unwrap();
 //! assert!(!tree.root_node().has_error());
 //! ```
@@ -28,11 +28,11 @@
 use tree_sitter_language::LanguageFn;
 
 extern "C" {
-    fn tree_sitter_c() -> *const ();
+    fn tree_sitter_b() -> *const ();
 }
 
 /// The tree-sitter [`LanguageFn`] for this grammar.
-pub const LANGUAGE: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_c) };
+pub const LANGUAGE: LanguageFn = unsafe { LanguageFn::from_raw(tree_sitter_b) };
 
 /// The content of the [`node-types.json`][] file for this grammar.
 ///
@@ -52,6 +52,6 @@ mod tests {
         let mut parser = tree_sitter::Parser::new();
         parser
             .set_language(&super::LANGUAGE.into())
-            .expect("Error loading C parser");
+            .expect("Error loading B parser");
     }
 }

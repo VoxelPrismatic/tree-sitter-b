@@ -1,18 +1,22 @@
 {
-  "name": "tree-sitter-c",
-  "version": "0.24.1",
-  "description": "C grammar for tree-sitter",
-  "repository": "https://github.com/tree-sitter/tree-sitter-c",
+  "name": "tree-sitter-b",
+  "version": "0.1.0",
+  "description": "B grammar for tree-sitter",
+  "repository": "https://github.com/voxelprismatic/tree-sitter-b",
   "license": "MIT",
   "author": {
-    "name": "Max Brunsfeld",
-    "email": "maxbrunsfeld@gmail.com"
+    "name": "VoxelPrismatic",
+    "email": "voxelprismatic@pm.me"
   },
   "maintainers": [
     {
       "name": "Amaan Qureshi",
       "email": "amaanq12@gmail.com"
-    }
+    },
+    {
+    "name": "Max Brunsfeld",
+    "email": "maxbrunsfeld@gmail.com"
+  }
   ],
   "main": "bindings/node",
   "types": "bindings/node",
@@ -20,7 +24,7 @@
     "incremental",
     "parsing",
     "tree-sitter",
-    "c"
+    "b"
   ],
   "files": [
     "grammar.js",

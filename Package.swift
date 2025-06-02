@@ -2,16 +2,16 @@
 import PackageDescription
 
 let package = Package(
-    name: "TreeSitterC",
+    name: "TreeSitterB",
     products: [
-        .library(name: "TreeSitterC", targets: ["TreeSitterC"]),
+        .library(name: "TreeSitterB", targets: ["TreeSitterB"]),
     ],
     dependencies: [
         .package(url: "https://github.com/tree-sitter/swift-tree-sitter", from: "0.8.0"),
     ],
     targets: [
         .target(
-            name: "TreeSitterC",
+            name: "TreeSitterB",
             dependencies: [],
             path: ".",
             sources: [
@@ -24,10 +24,10 @@ let package = Package(
             cSettings: [.headerSearchPath("src")]
         ),
         .testTarget(
-            name: "TreeSitterCTests",
+            name: "TreeSitterBTests",
             dependencies: [
                 "SwiftTreeSitter",
-                "TreeSitterC",
+                "TreeSitterB",
             ],
             path: "bindings/swift/TreeSitterCTests"
         )

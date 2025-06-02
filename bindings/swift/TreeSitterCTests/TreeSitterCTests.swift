@@ -1,12 +1,12 @@
 import XCTest
 import SwiftTreeSitter
-import TreeSitterC
+import TreeSitterB
 
 final class TreeSitterCTests: XCTestCase {
     func testCanLoadGrammar() throws {
         let parser = Parser()
-        let language = Language(language: tree_sitter_c())
+        let language = Language(language: tree_sitter_b())
         XCTAssertNoThrow(try parser.setLanguage(language),
-                         "Error loading C grammar")
+                         "Error loading B grammar")
     }
 }

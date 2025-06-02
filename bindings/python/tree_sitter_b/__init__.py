@@ -1,4 +1,4 @@
-"""C grammar for tree-sitter"""
+"""B grammar for tree-sitter"""
 
 from importlib.resources import files as _files
 
