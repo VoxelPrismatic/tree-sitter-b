@@ -8,7 +8,7 @@
 [![pypi][pypi]](https://pypi.org/project/tree-sitter-c)
 
 B grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
-Adapted from [Tree-sitter-c]([http://slps.github.io/zoo/c/iso-9899-tc3.html](https://github.com/tree-sitter/tree-sitter-c)).
+Adapted from [Tree-sitter-c](https://github.com/tree-sitter/tree-sitter-c).
 
 [ci]: https://img.shields.io/github/actions/workflow/status/tree-sitter/tree-sitter-c/ci.yml?logo=github&label=CI
 [discord]: https://img.shields.io/discord/1063097320771698699?logo=discord&label=discord
