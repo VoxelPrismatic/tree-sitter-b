@@ -1,23 +1,22 @@
 {
   "grammars": [
     {
-      "name": "c",
-      "camelcase": "C",
-      "scope": "source.c",
+      "name": "b",
+      "camelcase": "B",
+      "scope": "source.b",
       "path": ".",
       "file-types": [
-        "c",
-        "h"
+        "b"
       ],
       "highlights": "queries/highlights.scm",
       "tags": "queries/tags.scm",
-      "injection-regex": "^(c|h)$"
+      "injection-regex": "^(b)$"
     }
   ],
   "metadata": {
-    "version": "0.24.1",
+    "version": "0.1.0",
     "license": "MIT",
-    "description": "C grammar for tree-sitter",
+    "description": "B grammar for tree-sitter",
     "authors": [
       {
         "name": "Max Brunsfeld",
@@ -26,10 +25,14 @@
       {
         "name": "Amaan Qureshi",
         "email": "amaanq12@gmail.com"
+      },
+      {
+        "name": "VoxelPrismatic",
+        "email": "voxelprismatic@pm.me"
       }
     ],
     "links": {
-      "repository": "https://github.com/tree-sitter/tree-sitter-c"
+      "repository": "https://github.com/VoxelPrismatic/tree-sitter-b"
     }
   },
   "bindings": {
