@@ -1,4 +1,4 @@
-# tree-sitter-c
+# tree-sitter-b
 
 [![CI][ci]](https://github.com/tree-sitter/tree-sitter-c/actions/workflows/ci.yml)
 [![discord][discord]](https://discord.gg/w7nTvsVJhm)
@@ -7,8 +7,8 @@
 [![npm][npm]](https://www.npmjs.com/package/tree-sitter-c)
 [![pypi][pypi]](https://pypi.org/project/tree-sitter-c)
 
-C grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
-Adapted from [this C99 grammar](http://slps.github.io/zoo/c/iso-9899-tc3.html).
+B grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
+Adapted from [Tree-sitter-c]([http://slps.github.io/zoo/c/iso-9899-tc3.html](https://github.com/tree-sitter/tree-sitter-c)).
 
 [ci]: https://img.shields.io/github/actions/workflow/status/tree-sitter/tree-sitter-c/ci.yml?logo=github&label=CI
 [discord]: https://img.shields.io/discord/1063097320771698699?logo=discord&label=discord
