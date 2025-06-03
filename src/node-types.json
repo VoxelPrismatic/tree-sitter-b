@@ -67,19 +67,7 @@
         "required": true,
         "types": [
           {
-            "type": "c_stdlib",
-            "named": true
-          },
-          {
-            "type": "global",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "stdlib",
             "named": true
           }
         ]
@@ -109,19 +97,7 @@
         "required": true,
         "types": [
           {
-            "type": "c_stdlib",
-            "named": true
-          },
-          {
-            "type": "global",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "stdlib",
             "named": true
           }
         ]
@@ -135,23 +111,11 @@
             "named": false
           },
           {
-            "type": "c_stdlib",
-            "named": true
-          },
-          {
             "type": "constant",
             "named": true
           },
           {
-            "type": "global",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "stdlib",
             "named": true
           }
         ]
@@ -174,11 +138,6 @@
     }
   },
   {
-    "type": "c_stdlib",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "call",
     "named": true,
     "fields": {
@@ -197,19 +156,7 @@
         "required": true,
         "types": [
           {
-            "type": "c_stdlib",
-            "named": true
-          },
-          {
-            "type": "global",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "stdlib",
             "named": true
           }
         ]
@@ -277,6 +224,11 @@
     }
   },
   {
+    "type": "comment",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "constant",
     "named": true,
     "fields": {},
@@ -318,19 +270,7 @@
         "required": true,
         "types": [
           {
-            "type": "c_stdlib",
-            "named": true
-          },
-          {
-            "type": "global",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "stdlib",
             "named": true
           }
         ]
@@ -390,19 +330,7 @@
         "required": true,
         "types": [
           {
-            "type": "c_stdlib",
-            "named": true
-          },
-          {
-            "type": "global",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "stdlib",
             "named": true
           }
         ]
@@ -412,19 +340,7 @@
         "required": false,
         "types": [
           {
-            "type": "c_stdlib",
-            "named": true
-          },
-          {
-            "type": "global",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "stdlib",
             "named": true
           }
         ]
@@ -438,19 +354,7 @@
             "named": false
           },
           {
-            "type": "c_stdlib",
-            "named": true
-          },
-          {
-            "type": "global",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "stdlib",
             "named": true
           }
         ]
@@ -477,6 +381,10 @@
       "types": [
         {
           "type": "auto_statement",
+          "named": true
+        },
+        {
+          "type": "comment",
           "named": true
         },
         {
@@ -560,19 +468,7 @@
         "required": true,
         "types": [
           {
-            "type": "c_stdlib",
-            "named": true
-          },
-          {
-            "type": "global",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "stdlib",
             "named": true
           }
         ]
@@ -592,19 +488,7 @@
         "required": true,
         "types": [
           {
-            "type": "c_stdlib",
-            "named": true
-          },
-          {
-            "type": "global",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "stdlib",
             "named": true
           }
         ]
@@ -618,19 +502,7 @@
             "named": false
           },
           {
-            "type": "c_stdlib",
-            "named": true
-          },
-          {
-            "type": "global",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "stdlib",
             "named": true
           }
         ]
@@ -638,9 +510,24 @@
     }
   },
   {
-    "type": "global",
+    "type": "file",
     "named": true,
-    "fields": {}
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "program",
+          "named": true
+        },
+        {
+          "type": "program_c",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "goto_statement",
@@ -736,19 +623,7 @@
         "required": false,
         "types": [
           {
-            "type": "c_stdlib",
-            "named": true
-          },
-          {
-            "type": "global",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "stdlib",
             "named": true
           }
         ]
@@ -774,19 +649,7 @@
         "required": true,
         "types": [
           {
-            "type": "c_stdlib",
-            "named": true
-          },
-          {
-            "type": "global",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "stdlib",
             "named": true
           }
         ]
@@ -831,19 +694,7 @@
         "required": false,
         "types": [
           {
-            "type": "c_stdlib",
-            "named": true
-          },
-          {
-            "type": "global",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "stdlib",
             "named": true
           }
         ]
@@ -959,12 +810,82 @@
   {
     "type": "program",
     "named": true,
-    "root": true,
-    "fields": {},
+    "fields": {
+      "lhs": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "// -*- link:",
+            "named": false
+          }
+        ]
+      },
+      "rhs": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "-*-",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "definition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_c",
+    "named": true,
+    "fields": {
+      "lhs": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "// -*- link:",
+            "named": false
+          }
+        ]
+      },
+      "rhs": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "-*-",
+            "named": false
+          }
+        ]
+      },
+      "target": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "c",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
         {
           "type": "definition",
           "named": true
@@ -1146,11 +1067,6 @@
     }
   },
   {
-    "type": "stdlib",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "string_literal",
     "named": true,
     "fields": {},
@@ -1318,6 +1234,10 @@
     "named": false
   },
   {
+    "type": "-*-",
+    "named": false
+  },
+  {
     "type": "--",
     "named": false
   },
@@ -1327,6 +1247,18 @@
   },
   {
     "type": "/",
+    "named": false
+  },
+  {
+    "type": "/*",
+    "named": false
+  },
+  {
+    "type": "//",
+    "named": false
+  },
+  {
+    "type": "// -*- link:",
     "named": false
   },
   {
@@ -1398,10 +1330,6 @@
     "named": false
   },
   {
-    "type": "args",
-    "named": false
-  },
-  {
     "type": "auto",
     "named": false
   },
@@ -1410,44 +1338,11 @@
     "named": false
   },
   {
-    "type": "calloc",
+    "type": "c",
     "named": false
   },
   {
     "type": "case",
-    "named": false
-  },
-  {
-    "type": "char",
-    "named": false
-  },
-  {
-    "type": "chdir",
-    "named": false
-  },
-  {
-    "type": "chmod",
-    "named": false
-  },
-  {
-    "type": "chown",
-    "named": false
-  },
-  {
-    "type": "close",
-    "named": false
-  },
-  {
-    "type": "comment",
-    "named": true,
-    "extra": true
-  },
-  {
-    "type": "creat",
-    "named": false
-  },
-  {
-    "type": "ctime",
     "named": false
   },
   {
@@ -1459,43 +1354,11 @@
     "named": true
   },
   {
-    "type": "execl",
-    "named": false
-  },
-  {
-    "type": "execv",
-    "named": false
-  },
-  {
-    "type": "exit",
-    "named": false
-  },
-  {
     "type": "extrn",
     "named": false
   },
   {
-    "type": "fork",
-    "named": false
-  },
-  {
-    "type": "fstat",
-    "named": false
-  },
-  {
-    "type": "getchar",
-    "named": false
-  },
-  {
-    "type": "getuid",
-    "named": false
-  },
-  {
     "type": "goto",
-    "named": false
-  },
-  {
-    "type": "gtty",
     "named": false
   },
   {
@@ -1507,79 +1370,7 @@
     "named": false
   },
   {
-    "type": "ioctl",
-    "named": false
-  },
-  {
-    "type": "lchar",
-    "named": false
-  },
-  {
-    "type": "link",
-    "named": false
-  },
-  {
-    "type": "main",
-    "named": false
-  },
-  {
-    "type": "malloc",
-    "named": false
-  },
-  {
-    "type": "memcpy",
-    "named": false
-  },
-  {
-    "type": "memmove",
-    "named": false
-  },
-  {
-    "type": "memset",
-    "named": false
-  },
-  {
-    "type": "mkdir",
-    "named": false
-  },
-  {
-    "type": "open",
-    "named": false
-  },
-  {
-    "type": "printf",
-    "named": false
-  },
-  {
-    "type": "printn",
-    "named": false
-  },
-  {
-    "type": "putchar",
-    "named": false
-  },
-  {
-    "type": "rand",
-    "named": false
-  },
-  {
-    "type": "read",
-    "named": false
-  },
-  {
     "type": "return",
-    "named": false
-  },
-  {
-    "type": "setuid",
-    "named": false
-  },
-  {
-    "type": "srand",
-    "named": false
-  },
-  {
-    "type": "stat",
     "named": false
   },
   {
@@ -1587,43 +1378,11 @@
     "named": true
   },
   {
-    "type": "stty",
-    "named": false
-  },
-  {
     "type": "switch",
     "named": false
   },
   {
-    "type": "tcgetattr",
-    "named": false
-  },
-  {
-    "type": "tcsetattr",
-    "named": false
-  },
-  {
-    "type": "time",
-    "named": false
-  },
-  {
-    "type": "unlink",
-    "named": false
-  },
-  {
-    "type": "usleep",
-    "named": false
-  },
-  {
-    "type": "wait",
-    "named": false
-  },
-  {
     "type": "while",
-    "named": false
-  },
-  {
-    "type": "write",
     "named": false
   },
   {

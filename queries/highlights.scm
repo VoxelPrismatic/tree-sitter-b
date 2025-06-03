@@ -1,39 +1,32 @@
+(program_c
+  lhs: "// -*- link:" @comment
+  target: "c" @markup.strong @diff.minus
+  rhs: "-*-" @comment)
+
 ((identifier) @variable
   (#set! priority 95))
 
-((global) @constant
-  (#set! priority 95))
+((identifier) @function.builtin @constant
+  (#set! priority 105)
+  (#any-of? @function.builtin
+    "char" "chdir" "chmod" "chown" "close" "creat" "ctime" "execl" "execv" "exit" "fork" "fstat"
+    "getchar" "getuid" "gtty" "lchar" "link" "mkdir" "open" "printf" "printn" "putchar" "read"
+    "setuid" "stat" "stty" "unlink" "wait" "write" "main")
+  (#any-match? @constant "^[A-Z0-9_\\-]" "args"))
 
-((stdlib) @variable @function.builtin
-  (#set! priority 95))
+((identifier) @function.builtin
+  (#set! priority 105)
+  (#any-of? @function.builtin
+    "malloc" "calloc" "ioctl" "usleep" "memset" "memmove" "memcpy" "tcgetattr" "tcsetattr" "rand"
+    "srand" "time")
+  (#has-ancestor? @function.builtin program_c))
 
 (comment) @comment
 
-(auto_statement
-  token: "auto" @keyword.type
-  variable: [
-    (global) @constant
-    (stdlib) @variable @function.builtin
-    (c_stdlib) @variable @function.builtin
-    (identifier) @variable
-  ])
-
-(extrn_statement
-  token: "extrn" @keyword.type
-  variable: [
-    (global) @constant
-    (stdlib) @variable @function.builtin
-    (c_stdlib) @variable @function.builtin
-    (identifier) @variable
-  ])
-
-(define_array
-  name: [
-    (global) @constant
-    (stdlib) @variable @function.builtin
-    (c_stdlib) @variable @function.builtin
-    (identifier) @variable
-  ])
+[
+  "auto"
+  "extrn"
+] @keyword.type
 
 "return" @keyword.return
 
@@ -67,20 +60,10 @@
 (number_literal) @number
 
 (define_function
-  name: [
-    (stdlib) @variable @function.builtin
-    (identifier) @function.method
-    (global) @markup.underline @comment.error
-    (c_stdlib) @variable @function.builtin
-  ])
+  name: (identifier) @function.method)
 
 (call
-  name: [
-    (identifier) @function.method @function.method.call
-    (stdlib) @variable @function.builtin
-    (c_stdlib) @variable @function.builtin
-    (global) @markup.underline @comment.error
-  ])
+  name: (identifier) @function.method @function.method.call)
 
 [
   ","

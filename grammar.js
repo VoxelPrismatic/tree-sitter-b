@@ -53,11 +53,11 @@ const numLiteral = choice(
 );
 
 const intLiteral = seq(
-	optional(choice("+", "-")), numLiteral,
+	choice("+", "-", blank()), numLiteral,
 );
 
 const floatLiteral = seq(
-	optional(choice("+", "-")), literals.dec, ".", digits.dec,
+	choice("+", "-", blank()), literals.dec, ".", digits.dec,
 )
 
 /**
@@ -80,30 +80,50 @@ function named_join(name, rule, char) {
 	return field(name + "s", join(field(name, rule), char));
 }
 
+/**
+ * @type {Object.<string, TokenRule>}
+const stdlib = {
+	"c": token(choice(
+		"malloc", "calloc", "ioctl", "usleep", "memset", "memmove", "memcpy",
+		"tcgetattr", "tcsetattr", "rand", "srand", "time",
+	)),
+}
+ */
+
+function stdlib(char) {
+	return seq(field("lhs", "// -*- link:"), field("target", char), field("rhs", "-*-"))
+}
+
 module.exports = grammar({
 	name: "b",
 
 	word: $ => $.identifier,
 
-	extras: $ => [
-		$.comment,
+	extras: _ => [
 		/\s/,
 	],
 
 	inline: $ => [
+		$.targets,
 		$._name,
 	],
 
-	conflicts: $ => [
-		[$.define_function, $.define_function],
-	],
 
 	rules: {
-		program: $ => repeat($.definition),
-
-		definition: $ => choice(
-			$.define_array, $.define_function, $.auto_statement,
+		file: $ => choice(
+			$.program_c,
+			$.program,
 		),
+
+		program_c: $ => prec(1, seq(optional(repeat($.comment)), stdlib("c"), repeat1($.definition))),
+		program: $ => prec(1, seq(optional(stdlib(/[^ ]+/)), repeat1($.definition))),
+
+		definition: $ => prec(10, choice(
+			$.define_array,
+			$.define_function,
+			$.auto_statement,
+			$.comment,
+		)),
 
 		define_array: $ => seq(
 			$._name,
@@ -306,40 +326,13 @@ module.exports = grammar({
 		),
 
 		identifier: _ => /[\p{XID_Start}][\p{XID_Continue}]*/u,
-		global: $ => prec(5, choice(/[_A-Z][_A-Z0-9]*/, $._globals)),
 
 		// http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
-		comment: _ => token(choice(
+		comment: _ => choice(
 			seq('//', /.*/),
 			seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/"),
-		)),
-
-		stdlib: _ => prec(1, choice(
-			"char", "chdir", "chmod", "chown",
-			"close", "creat", "ctime", "execl",
-			"execv", "exit", "fork", "fstat",
-			"getchar", "getuid", "gtty", "lchar",
-			"link", "mkdir", "open", "printf",
-			"printn", "putchar", "read", "setuid",
-			"stat", "stty", "unlink", "wait",
-			"write", "main",
-		)),
-
-		c_stdlib: _ => prec(1, choice(
-			"malloc", "calloc", "ioctl", "usleep",
-			"memset", "memmove", "memcpy", "tcgetattr",
-			"tcsetattr", "rand", "srand", "time",
-		)),
-
-		_globals: _ => choice(
-			"args"
 		),
 
-		_name: $ => field("name", choice(
-			$.global,
-			$.stdlib,
-			$.c_stdlib,
-			$.identifier,
-		)),
+		_name: $ => field("name", $.identifier),
 	},
 });

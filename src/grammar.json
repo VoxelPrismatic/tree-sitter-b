@@ -3,29 +3,156 @@
   "name": "b",
   "word": "identifier",
   "rules": {
-    "program": {
-      "type": "REPEAT",
-      "content": {
-        "type": "SYMBOL",
-        "name": "definition"
-      }
-    },
-    "definition": {
+    "file": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "define_array"
+          "name": "program_c"
         },
         {
           "type": "SYMBOL",
-          "name": "define_function"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "auto_statement"
+          "name": "program"
         }
       ]
+    },
+    "program_c": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "comment"
+                }
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "lhs",
+                "content": {
+                  "type": "STRING",
+                  "value": "// -*- link:"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "target",
+                "content": {
+                  "type": "STRING",
+                  "value": "c"
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "rhs",
+                "content": {
+                  "type": "STRING",
+                  "value": "-*-"
+                }
+              }
+            ]
+          },
+          {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SYMBOL",
+              "name": "definition"
+            }
+          }
+        ]
+      }
+    },
+    "program": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "FIELD",
+                    "name": "lhs",
+                    "content": {
+                      "type": "STRING",
+                      "value": "// -*- link:"
+                    }
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "target",
+                    "content": {
+                      "type": "PATTERN",
+                      "value": "[^ ]+"
+                    }
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "rhs",
+                    "content": {
+                      "type": "STRING",
+                      "value": "-*-"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SYMBOL",
+              "name": "definition"
+            }
+          }
+        ]
+      }
+    },
+    "definition": {
+      "type": "PREC",
+      "value": 10,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "define_array"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "define_function"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "auto_statement"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "comment"
+          }
+        ]
+      }
     },
     "define_array": {
       "type": "SEQ",
@@ -1236,17 +1363,12 @@
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": "+"
-                      },
-                      {
-                        "type": "STRING",
-                        "value": "-"
-                      }
-                    ]
+                    "type": "STRING",
+                    "value": "+"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "-"
                   },
                   {
                     "type": "BLANK"
@@ -1535,17 +1657,12 @@
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": "+"
-                      },
-                      {
-                        "type": "STRING",
-                        "value": "-"
-                      }
-                    ]
+                    "type": "STRING",
+                    "value": "+"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "-"
                   },
                   {
                     "type": "BLANK"
@@ -2072,253 +2189,38 @@
       "value": "[\\p{XID_Start}][\\p{XID_Continue}]*",
       "flags": "u"
     },
-    "global": {
-      "type": "PREC",
-      "value": 5,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "PATTERN",
-            "value": "[_A-Z][_A-Z0-9]*"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_globals"
-          }
-        ]
-      }
-    },
     "comment": {
-      "type": "TOKEN",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "//"
-              },
-              {
-                "type": "PATTERN",
-                "value": ".*"
-              }
-            ]
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "/*"
-              },
-              {
-                "type": "PATTERN",
-                "value": "[^*]*\\*+([^/*][^*]*\\*+)*"
-              },
-              {
-                "type": "STRING",
-                "value": "/"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "stdlib": {
-      "type": "PREC",
-      "value": 1,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "char"
-          },
-          {
-            "type": "STRING",
-            "value": "chdir"
-          },
-          {
-            "type": "STRING",
-            "value": "chmod"
-          },
-          {
-            "type": "STRING",
-            "value": "chown"
-          },
-          {
-            "type": "STRING",
-            "value": "close"
-          },
-          {
-            "type": "STRING",
-            "value": "creat"
-          },
-          {
-            "type": "STRING",
-            "value": "ctime"
-          },
-          {
-            "type": "STRING",
-            "value": "execl"
-          },
-          {
-            "type": "STRING",
-            "value": "execv"
-          },
-          {
-            "type": "STRING",
-            "value": "exit"
-          },
-          {
-            "type": "STRING",
-            "value": "fork"
-          },
-          {
-            "type": "STRING",
-            "value": "fstat"
-          },
-          {
-            "type": "STRING",
-            "value": "getchar"
-          },
-          {
-            "type": "STRING",
-            "value": "getuid"
-          },
-          {
-            "type": "STRING",
-            "value": "gtty"
-          },
-          {
-            "type": "STRING",
-            "value": "lchar"
-          },
-          {
-            "type": "STRING",
-            "value": "link"
-          },
-          {
-            "type": "STRING",
-            "value": "mkdir"
-          },
-          {
-            "type": "STRING",
-            "value": "open"
-          },
-          {
-            "type": "STRING",
-            "value": "printf"
-          },
-          {
-            "type": "STRING",
-            "value": "printn"
-          },
-          {
-            "type": "STRING",
-            "value": "putchar"
-          },
-          {
-            "type": "STRING",
-            "value": "read"
-          },
-          {
-            "type": "STRING",
-            "value": "setuid"
-          },
-          {
-            "type": "STRING",
-            "value": "stat"
-          },
-          {
-            "type": "STRING",
-            "value": "stty"
-          },
-          {
-            "type": "STRING",
-            "value": "unlink"
-          },
-          {
-            "type": "STRING",
-            "value": "wait"
-          },
-          {
-            "type": "STRING",
-            "value": "write"
-          },
-          {
-            "type": "STRING",
-            "value": "main"
-          }
-        ]
-      }
-    },
-    "c_stdlib": {
-      "type": "PREC",
-      "value": 1,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "malloc"
-          },
-          {
-            "type": "STRING",
-            "value": "calloc"
-          },
-          {
-            "type": "STRING",
-            "value": "ioctl"
-          },
-          {
-            "type": "STRING",
-            "value": "usleep"
-          },
-          {
-            "type": "STRING",
-            "value": "memset"
-          },
-          {
-            "type": "STRING",
-            "value": "memmove"
-          },
-          {
-            "type": "STRING",
-            "value": "memcpy"
-          },
-          {
-            "type": "STRING",
-            "value": "tcgetattr"
-          },
-          {
-            "type": "STRING",
-            "value": "tcsetattr"
-          },
-          {
-            "type": "STRING",
-            "value": "rand"
-          },
-          {
-            "type": "STRING",
-            "value": "srand"
-          },
-          {
-            "type": "STRING",
-            "value": "time"
-          }
-        ]
-      }
-    },
-    "_globals": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "args"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "//"
+            },
+            {
+              "type": "PATTERN",
+              "value": ".*"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "/*"
+            },
+            {
+              "type": "PATTERN",
+              "value": "[^*]*\\*+([^/*][^*]*\\*+)*"
+            },
+            {
+              "type": "STRING",
+              "value": "/"
+            }
+          ]
         }
       ]
     },
@@ -2326,44 +2228,18 @@
       "type": "FIELD",
       "name": "name",
       "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "global"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "stdlib"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "c_stdlib"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "identifier"
-          }
-        ]
+        "type": "SYMBOL",
+        "name": "identifier"
       }
     }
   },
   "extras": [
     {
-      "type": "SYMBOL",
-      "name": "comment"
-    },
-    {
       "type": "PATTERN",
       "value": "\\s"
     }
   ],
-  "conflicts": [
-    [
-      "define_function",
-      "define_function"
-    ]
-  ],
+  "conflicts": [],
   "precedences": [],
   "externals": [],
   "inline": [
