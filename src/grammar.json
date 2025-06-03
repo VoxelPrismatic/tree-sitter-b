@@ -77,7 +77,7 @@
           "type": "ALIAS",
           "content": {
             "type": "PREC",
-            "value": 3,
+            "value": 2,
             "content": {
               "type": "SEQ",
               "members": [
@@ -144,7 +144,7 @@
           "type": "ALIAS",
           "content": {
             "type": "PREC",
-            "value": 4,
+            "value": 2,
             "content": {
               "type": "SEQ",
               "members": [
@@ -211,7 +211,7 @@
           "type": "ALIAS",
           "content": {
             "type": "PREC",
-            "value": 4,
+            "value": 2,
             "content": {
               "type": "SEQ",
               "members": [
@@ -278,7 +278,7 @@
           "type": "ALIAS",
           "content": {
             "type": "PREC",
-            "value": 4,
+            "value": 2,
             "content": {
               "type": "SEQ",
               "members": [
@@ -340,6 +340,810 @@
           },
           "named": true,
           "value": "program_c_math_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 2,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "nl_types.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_nl_types_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 2,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "regex.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_regex_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 2,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "setjmp.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_setjmp_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 2,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "signal.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_signal_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 2,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "stdarg.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_stdarg_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 2,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "stdio.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_stdio_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 2,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "stdlib.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_stdlib_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 2,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "string.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_string_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 2,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "strings.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_strings_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 2,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "time.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_time_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 2,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "wchar.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_wchar_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 2,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "wctype.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_wctype_h"
         },
         {
           "type": "SYMBOL",
@@ -2083,6 +2887,10 @@
             {
               "type": "PATTERN",
               "value": "[^\\\\]"
+            },
+            {
+              "type": "PATTERN",
+              "value": "[\\*\\%]."
             },
             {
               "type": "SYMBOL",

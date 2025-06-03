@@ -81,13 +81,12 @@ function named_join(name, rule, char) {
 }
 
 /**
- * @param pri {number} priority
  * @param $ {GrammarSymbols.<any>}
  * @param char {string}
  * @returns {PrecRule}
  */
-function stdlib(pri, $, char) {
-	return prec(pri, seq(
+function stdlib($, char) {
+	return prec(2, seq(
 		optional(repeat($.comment)),
 		alias(seq(
 			field("lhs", "// -*- link:"),
@@ -115,13 +114,23 @@ module.exports = grammar({
 
 	rules: {
 		file: $ => choice(
-			alias(stdlib(2, $, "assert.h"), $.program_c_assert_h),
-			alias(stdlib(2, $, "ctype.h"), $.program_c_ctype_h),
-			alias(stdlib(2, $, "langinfo.h"), $.program_c_langinfo_h),
-			alias(stdlib(2, $, "locale.h"), $.program_c_locale_h),
-			alias(stdlib(2, $, "math.h"), $.program_c_math_h),
-			alias(stdlib(2, $, "nl_types.h"), $.program_c_nl_types_h),
-			alias(stdlib(2, $, "nl_types.h"), $.program_c_nl_types_h),
+			alias(stdlib($, "assert.h"), $.program_c_assert_h),
+			alias(stdlib($, "ctype.h"), $.program_c_ctype_h),
+			alias(stdlib($, "langinfo.h"), $.program_c_langinfo_h),
+			alias(stdlib($, "locale.h"), $.program_c_locale_h),
+			alias(stdlib($, "math.h"), $.program_c_math_h),
+			alias(stdlib($, "nl_types.h"), $.program_c_nl_types_h),
+			alias(stdlib($, "regex.h"), $.program_c_regex_h),
+			alias(stdlib($, "setjmp.h"), $.program_c_setjmp_h),
+			alias(stdlib($, "signal.h"), $.program_c_signal_h),
+			alias(stdlib($, "stdarg.h"), $.program_c_stdarg_h),
+			alias(stdlib($, "stdio.h"), $.program_c_stdio_h),
+			alias(stdlib($, "stdlib.h"), $.program_c_stdlib_h),
+			alias(stdlib($, "string.h"), $.program_c_string_h),
+			alias(stdlib($, "strings.h"), $.program_c_strings_h),
+			alias(stdlib($, "time.h"), $.program_c_time_h),
+			alias(stdlib($, "wchar.h"), $.program_c_wchar_h),
+			alias(stdlib($, "wctype.h"), $.program_c_wctype_h),
 			$.program,
 		),
 

@@ -572,6 +572,54 @@
         {
           "type": "program_c_math_h",
           "named": true
+        },
+        {
+          "type": "program_c_nl_types_h",
+          "named": true
+        },
+        {
+          "type": "program_c_regex_h",
+          "named": true
+        },
+        {
+          "type": "program_c_setjmp_h",
+          "named": true
+        },
+        {
+          "type": "program_c_signal_h",
+          "named": true
+        },
+        {
+          "type": "program_c_stdarg_h",
+          "named": true
+        },
+        {
+          "type": "program_c_stdio_h",
+          "named": true
+        },
+        {
+          "type": "program_c_stdlib_h",
+          "named": true
+        },
+        {
+          "type": "program_c_string_h",
+          "named": true
+        },
+        {
+          "type": "program_c_strings_h",
+          "named": true
+        },
+        {
+          "type": "program_c_time_h",
+          "named": true
+        },
+        {
+          "type": "program_c_wchar_h",
+          "named": true
+        },
+        {
+          "type": "program_c_wctype_h",
+          "named": true
         }
       ]
     }
@@ -971,6 +1019,186 @@
   },
   {
     "type": "program_c_math_h",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_c_nl_types_h",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_c_regex_h",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_c_setjmp_h",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_c_signal_h",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_c_stdarg_h",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_c_stdio_h",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_c_stdlib_h",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_c_string_h",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_c_strings_h",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_c_time_h",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_c_wchar_h",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_c_wctype_h",
     "named": true,
     "fields": {},
     "children": {
