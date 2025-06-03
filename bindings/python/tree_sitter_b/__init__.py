@@ -1,4 +1,4 @@
-"""B grammar for tree-sitter"""
+"""B grammar for treesitter"""
 
 from importlib.resources import files as _files
 
@@ -12,18 +12,26 @@ def _get_query(name, file):
 
 
 def __getattr__(name):
-    if name == "HIGHLIGHTS_QUERY":
-        return _get_query("HIGHLIGHTS_QUERY", "highlights.scm")
-    if name == "TAGS_QUERY":
-        return _get_query("TAGS_QUERY", "tags.scm")
+    # NOTE: uncomment these to include any queries that this grammar contains:
+
+    # if name == "HIGHLIGHTS_QUERY":
+    #     return _get_query("HIGHLIGHTS_QUERY", "highlights.scm")
+    # if name == "INJECTIONS_QUERY":
+    #     return _get_query("INJECTIONS_QUERY", "injections.scm")
+    # if name == "LOCALS_QUERY":
+    #     return _get_query("LOCALS_QUERY", "locals.scm")
+    # if name == "TAGS_QUERY":
+    #     return _get_query("TAGS_QUERY", "tags.scm")
 
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
 
 __all__ = [
     "language",
-    "HIGHLIGHTS_QUERY",
-    "TAGS_QUERY",
+    # "HIGHLIGHTS_QUERY",
+    # "INJECTIONS_QUERY",
+    # "LOCALS_QUERY",
+    # "TAGS_QUERY",
 ]
 
 

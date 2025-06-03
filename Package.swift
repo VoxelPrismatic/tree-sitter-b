@@ -1,5 +1,12 @@
 // swift-tools-version:5.3
+
+import Foundation
 import PackageDescription
+
+var sources = ["src/parser.c"]
+if FileManager.default.fileExists(atPath: "src/scanner.c") {
+    sources.append("src/scanner.c")
+}
 
 let package = Package(
     name: "TreeSitterB",
@@ -14,9 +21,7 @@ let package = Package(
             name: "TreeSitterB",
             dependencies: [],
             path: ".",
-            sources: [
-                "src/parser.c",
-            ],
+            sources: sources,
             resources: [
                 .copy("queries")
             ],
@@ -29,7 +34,7 @@ let package = Package(
                 "SwiftTreeSitter",
                 "TreeSitterB",
             ],
-            path: "bindings/swift/TreeSitterCTests"
+            path: "bindings/swift/TreeSitterBTests"
         )
     ],
     cLanguageStandard: .c11

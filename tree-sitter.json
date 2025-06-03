@@ -1,46 +1,40 @@
 {
-  "grammars": [
-    {
-      "name": "b",
-      "camelcase": "B",
-      "scope": "source.b",
-      "path": ".",
-      "file-types": [
-        "b"
-      ],
-      "highlights": "queries/highlights.scm",
-      "tags": "queries/tags.scm",
-      "injection-regex": "^(b)$"
-    }
-  ],
-  "metadata": {
-    "version": "0.1.0",
-    "license": "MIT",
-    "description": "B grammar for tree-sitter",
-    "authors": [
-      {
-        "name": "Max Brunsfeld",
-        "email": "maxbrunsfeld@gmail.com"
-      },
-      {
-        "name": "Amaan Qureshi",
-        "email": "amaanq12@gmail.com"
-      },
-      {
-        "name": "VoxelPrismatic",
-        "email": "voxelprismatic@pm.me"
-      }
-    ],
-    "links": {
-      "repository": "https://github.com/VoxelPrismatic/tree-sitter-b"
-    }
-  },
-  "bindings": {
-    "c": true,
-    "go": true,
-    "node": true,
-    "python": true,
-    "rust": true,
-    "swift": true
-  }
+	"$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+	"grammars": [
+		{
+			"name": "b",
+			"camelcase": "B",
+			"title": "B",
+			"scope": "source.b",
+			"file-types": ["b"],
+			"injection-regex": "^b$",
+			"class-name": "TreeSitterB",
+			"path": ".",
+			"highlights": "queries/highlights.scm"
+		}
+	],
+	"metadata": {
+		"version": "0.1.0",
+		"license": "AGPLv2",
+		"description": "B grammar for treesitter",
+		"authors": [
+			{
+				"name": "VoxelPrismatic",
+				"email": "voxelprismatic@pm.me",
+				"url": "https://x.com/voxelprismatic"
+			}
+		],
+		"links": {
+			"repository": "https://github.com/VoxelPrismatic/tree-sitter-b"
+		}
+	},
+	"bindings": {
+		"c": true,
+		"go": true,
+		"node": true,
+		"python": true,
+		"rust": true,
+		"swift": true,
+		"zig": false
+	}
 }

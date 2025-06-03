@@ -2,7 +2,7 @@ import XCTest
 import SwiftTreeSitter
 import TreeSitterB
 
-final class TreeSitterCTests: XCTestCase {
+final class TreeSitterBTests: XCTestCase {
     func testCanLoadGrammar() throws {
         let parser = Parser()
         let language = Language(language: tree_sitter_b())

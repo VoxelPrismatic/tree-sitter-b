@@ -3,8 +3,8 @@ package tree_sitter_b_test
 import (
 	"testing"
 
-	tree_sitter_b "github.com/VoxelPrismatic/tree-sitter-b/bindings/go"
 	tree_sitter "github.com/tree-sitter/go-tree-sitter"
+	tree_sitter_b "github.com/voxelprismatic/tree-sitter-b/bindings/go"
 )
 
 func TestCanLoadGrammar(t *testing.T) {
