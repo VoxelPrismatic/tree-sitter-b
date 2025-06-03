@@ -1,25 +1,17 @@
-(program_c
-  lhs: "// -*- link:" @comment
-  target: "c" @markup.strong @diff.minus
-  rhs: "-*-" @comment)
+(_
+  lhs: (linker) @comment
+  target: (linker) @markup.strong @diff.plus
+  rhs: (linker) @comment)
+
+(linker
+  target: (link_name) @markup.strong @diff.minus) @comment
 
 ((identifier) @variable
   (#set! priority 95))
 
-((identifier) @function.builtin @constant
-  (#set! priority 105)
-  (#any-of? @function.builtin
-    "char" "chdir" "chmod" "chown" "close" "creat" "ctime" "execl" "execv" "exit" "fork" "fstat"
-    "getchar" "getuid" "gtty" "lchar" "link" "mkdir" "open" "printf" "printn" "putchar" "read"
-    "setuid" "stat" "stty" "unlink" "wait" "write" "main")
-  (#any-match? @constant "^[A-Z0-9_\\-]" "args"))
-
-((identifier) @function.builtin
-  (#set! priority 105)
-  (#any-of? @function.builtin
-    "malloc" "calloc" "ioctl" "usleep" "memset" "memmove" "memcpy" "tcgetattr" "tcsetattr" "rand"
-    "srand" "time")
-  (#has-ancestor? @function.builtin program_c))
+((identifier) @constant
+  (#set! priority 103)
+  (#any-match? @constant "^[A-Z0-9_\\-]+$" "args"))
 
 (comment) @comment
 
@@ -70,3 +62,37 @@
   ":"
   ";"
 ] @keyword.delimeter
+
+((identifier) @function.builtin
+  (#set! priority 105)
+  (#any-of? @function.builtin
+    "char" "chdir" "chmod" "chown" "close" "creat" "ctime" "execl" "execv" "exit" "fork" "fstat"
+    "getchar" "getuid" "gtty" "lchar" "link" "mkdir" "open" "printf" "printn" "putchar" "read"
+    "setuid" "stat" "stty" "unlink" "wait" "write" "main"))
+
+((identifier) @function.builtin
+  (#set! priority 105)
+  (#any-of? @function.builtin "assert")
+  (#has-ancestor? @function.builtin program_c_assert_h))
+
+((identifier) @function.builtin
+  (#set! priority 105)
+  (#any-of? @function.builtin
+    "isalnum" "isalpha" "isascii4" "isblank" "iscntrl" "isdigit" "isgraph" "islower" "isprint"
+    "ispunct" "isspace" "isupper" "toascii" "tolower" "toupper")
+  (#has-ancestor? @function.builtin program_c_ctype_h))
+
+((identifier) @function.builtin
+  (#set! priority 105)
+  (#any-of? @function.builtin "nl_langinfo4")
+  (#has-ancestor? @function.builtin program_c_langinfo_h))
+
+((identifier) @function.builtin
+  (#set! priority 105)
+  (#any-of? @function.builtin
+    "acos" "asin" "atan" "atan2" "ceil" "cos" "cosh" "erf" "erfc" "exp" "fabs" "floor" "fmod"
+    "frexp" "gamma" "hypot" "j0" "j1" "jn" "ldexp" "log" "log10" "modf" "nextafter" "nextafterl"
+    "nexttoward" "nexttowardl" "pow" "quantexpd32" "quantexpd64" "quantexpd128" "quantized32"
+    "quantized64" "quantized128" "samequantumd32" "samequantumd64" "samequantumd128" "sin" "sinh"
+    "sqrt" "tan" "tanh" "y0" "y1" "yn")
+  (#has-ancestor? @function.builtin program_c_math_h))

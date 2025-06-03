@@ -81,17 +81,21 @@ function named_join(name, rule, char) {
 }
 
 /**
- * @type {Object.<string, TokenRule>}
-const stdlib = {
-	"c": token(choice(
-		"malloc", "calloc", "ioctl", "usleep", "memset", "memmove", "memcpy",
-		"tcgetattr", "tcsetattr", "rand", "srand", "time",
-	)),
-}
+ * @param pri {number} priority
+ * @param $ {GrammarSymbols.<any>}
+ * @param char {string}
+ * @returns {PrecRule}
  */
-
-function stdlib(char) {
-	return seq(field("lhs", "// -*- link:"), field("target", char), field("rhs", "-*-"))
+function stdlib(pri, $, char) {
+	return prec(pri, seq(
+		optional(repeat($.comment)),
+		alias(seq(
+			field("lhs", "// -*- link:"),
+			field("target", char),
+			field("rhs", "-*-")
+		), $.linker),
+		$.file
+	));
 }
 
 module.exports = grammar({
@@ -111,12 +115,24 @@ module.exports = grammar({
 
 	rules: {
 		file: $ => choice(
-			$.program_c,
+			alias(stdlib(2, $, "assert.h"), $.program_c_assert_h),
+			alias(stdlib(2, $, "ctype.h"), $.program_c_ctype_h),
+			alias(stdlib(2, $, "langinfo.h"), $.program_c_langinfo_h),
+			alias(stdlib(2, $, "locale.h"), $.program_c_locale_h),
+			alias(stdlib(2, $, "math.h"), $.program_c_math_h),
+			alias(stdlib(2, $, "nl_types.h"), $.program_c_nl_types_h),
+			alias(stdlib(2, $, "nl_types.h"), $.program_c_nl_types_h),
 			$.program,
 		),
 
-		program_c: $ => prec(1, seq(optional(repeat($.comment)), stdlib("c"), repeat1($.definition))),
-		program: $ => prec(1, seq(optional(stdlib(/[^ ]+/)), repeat1($.definition))),
+		program: $ => prec(1, seq(optional($.linker), repeat1($.definition))),
+
+		link_name: _ => /[a-zA-Z0-9_\\-\\.]+/,
+		linker: $ => seq(
+			field("lhs", "// -*- link:"),
+			field("target", $.link_name),
+			field("rhs", "-*-")
+		),
 
 		definition: $ => prec(10, choice(
 			$.define_array,
@@ -271,7 +287,7 @@ module.exports = grammar({
 		)),
 
 		rune_literal: $ => seq(
-			"'", choice(/[^\\]/, $.escape_sequence), "'",
+			"'", choice(/[^\\]/, /[\*\%]./, $.escape_sequence), "'",
 		),
 
 		string_literal: $ => seq(

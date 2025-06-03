@@ -7,74 +7,345 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "program_c"
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 2,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "assert.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_assert_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 3,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "ctype.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_ctype_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 4,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "langinfo.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_langinfo_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 4,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "locale.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_locale_h"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 4,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "math.h"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_c_math_h"
         },
         {
           "type": "SYMBOL",
           "name": "program"
         }
       ]
-    },
-    "program_c": {
-      "type": "PREC",
-      "value": 1,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "REPEAT",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "comment"
-                }
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "FIELD",
-                "name": "lhs",
-                "content": {
-                  "type": "STRING",
-                  "value": "// -*- link:"
-                }
-              },
-              {
-                "type": "FIELD",
-                "name": "target",
-                "content": {
-                  "type": "STRING",
-                  "value": "c"
-                }
-              },
-              {
-                "type": "FIELD",
-                "name": "rhs",
-                "content": {
-                  "type": "STRING",
-                  "value": "-*-"
-                }
-              }
-            ]
-          },
-          {
-            "type": "REPEAT1",
-            "content": {
-              "type": "SYMBOL",
-              "name": "definition"
-            }
-          }
-        ]
-      }
     },
     "program": {
       "type": "PREC",
@@ -86,33 +357,8 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "FIELD",
-                    "name": "lhs",
-                    "content": {
-                      "type": "STRING",
-                      "value": "// -*- link:"
-                    }
-                  },
-                  {
-                    "type": "FIELD",
-                    "name": "target",
-                    "content": {
-                      "type": "PATTERN",
-                      "value": "[^ ]+"
-                    }
-                  },
-                  {
-                    "type": "FIELD",
-                    "name": "rhs",
-                    "content": {
-                      "type": "STRING",
-                      "value": "-*-"
-                    }
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "linker"
               },
               {
                 "type": "BLANK"
@@ -128,6 +374,39 @@
           }
         ]
       }
+    },
+    "link_name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9_\\\\-\\\\.]+"
+    },
+    "linker": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "lhs",
+          "content": {
+            "type": "STRING",
+            "value": "// -*- link:"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "target",
+          "content": {
+            "type": "SYMBOL",
+            "name": "link_name"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "rhs",
+          "content": {
+            "type": "STRING",
+            "value": "-*-"
+          }
+        }
+      ]
     },
     "definition": {
       "type": "PREC",
