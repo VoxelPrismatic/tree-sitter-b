@@ -12,7 +12,7 @@ const op_IncDec = [
 ];
 
 const op_Unary = [
-	"!",
+	"!", "-",
 ];
 
 const op_Binary = [
@@ -44,7 +44,7 @@ const digits = {
 const literals = {
 	hex: seq("0", choice("x", "X"), optional("_"), digits.hex),
 	oct: seq("0", optional("_"), digits.oct),
-	dec: seq(/[1-9]/, optional("_"), digits.dec),
+	dec: prec(1, choice("0", seq(/[1-9]/, optional(seq(optional("_"), digits.dec))))),
 	bin: seq("0", choice("b", "B"), optional("_"), digits.bin),
 };
 
@@ -56,7 +56,12 @@ const intLiteral = seq(
 	optional(choice("+", "-")), numLiteral,
 );
 
+const floatLiteral = seq(
+	optional(choice("+", "-")), literals.dec, ".", digits.dec,
+)
+
 /**
+ * rule {char rule}*
  * @param rule {RuleOrLiteral}
  * @param char {RuleOrLiteral}
  * @returns {SeqRule}
@@ -75,91 +80,178 @@ function named_join(name, rule, char) {
 	return field(name + "s", join(field(name, rule), char));
 }
 
-
 module.exports = grammar({
 	name: "b",
 
 	word: $ => $.identifier,
 
 	extras: $ => [
-		// $.statement,
 		$.comment,
 		/\s/,
 	],
 
 	inline: $ => [
-		$.statement,
-		$._operator,
+		$._name,
 	],
 
-	supertypes: $ => [
-		$.statement,
-		$._operator,
+	conflicts: $ => [
+		[$.define_function, $.define_function],
 	],
 
 	rules: {
-		identifier: _ => /[a-zA-Z_][a-zA-Z0-9]*/,
+		program: $ => repeat($.definition),
 
-		// http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
-		comment: _ => token(choice(
-			seq("//", /.*/),
-			seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/"),
-		)),
-
-		auto_statement: $ => seq(
-			field("tok", token("auto")),
-			named_join("name", $.identifier, ","),
-			";",
+		definition: $ => choice(
+			$.define_array, $.define_function, $.auto_statement,
 		),
 
-		extrn_statement: $ => seq(
-			field("tok", token("extrn")),
-			named_join("name", $.identifier, ","),
-			";",
-		),
-
-		goto_statement: $ => seq(
-			field("tok", token("goto")),
-			field("name", $.identifier),
+		define_array: $ => seq(
+			$._name,
+			optional(seq(
+				"[", optional(field("size", $.constant)), "]",
+			)),
+			optional(named_join("value", $.ival, field("comma", ","))),
 			";"
 		),
 
-		label_statement: $ => seq(
-			field("name", $.identifier),
+		define_function: $ => prec(5, seq(
+			$._name,
+			"(",
+			optional(named_join("parameter", $._name, field("comma", ","))),
+			")",
+			$.statement,
+		)),
+
+		statement: $ => choice(
+			$.auto_statement,
+			$.extrn_statement,
+			$.label_statement,
+			$.case_statement,
+			$.block_statement,
+			$.if_statement,
+			$.while_statement,
+			$.switch_statement,
+			$.goto_statement,
+			$.return_statement,
+			seq($.rvalue, ";"),
+		),
+
+		_if: _ => prec(15, "if"),
+		_while: _ => prec(15, "while"),
+		_switch: _ => prec(15, "switch"),
+		_case: _ => prec(15, "case"),
+		_auto: _ => prec(15, "auto"),
+		_extrn: _ => prec(15, "extrn"),
+		_goto: _ => prec(15, "goto"),
+		_return: _ => prec(15, "return"),
+
+		auto_statement: $ => seq(
+			field("token", $._auto),
+			field("variables", join(seq(
+				field("variable", $._name),
+				optional(field("value", $.constant),
+				)), field("comma", ","))),
+			";"
+		),
+
+
+		extrn_statement: $ => seq(
+			field("token", $._extrn),
+			named_join("variable", $._name, field("comma", ",")),
+		),
+
+		label_statement: $ => prec.left(0, seq(
+			$._name, ":", choice($.statement, blank())
+		)),
+
+		case_statement: $ => seq(
+			field("token", $._case),
+			field("value", $.constant),
 			":",
 			$.statement,
 		),
 
 		block_statement: $ => seq(
-			"{", $.statement, "}",
+			"{", repeat($.statement), "}"
 		),
 
-		statement: $ => choice(
-			$.goto_statement,
-			$.auto_statement,
-			$.extrn_statement,
-			$.label_statement,
-			$.block_statement,
+		if_statement: $ => prec.right(0, seq(
+			field("token", $._if),
+			"(", field("condition", $.rvalue), ")",
+			$.statement,
+			optional(seq(
+				field("token", "else"), $.statement,
+			)),
+		)),
+
+		while_statement: $ => seq(
+			field("token", $._while),
+			"(", field("condition", $.rvalue), ")",
+			$.statement,
 		),
 
-
-		op_binary: _ => choice(...op_Binary),
-		op_unary: _ => choice(...op_Unary),
-		op_assign: _ => choice(...op_Assign),
-		op_incdec: _ => choice(...op_IncDec),
-		_operator: $ => alias(choice(
-			$.op_binary,
-			$.op_unary,
-			$.op_assign,
-			$.op_incdec,
-		), "operator"),
-
-		number_literal: _ => choice(
-			intLiteral, numLiteral,
+		switch_statement: $ => seq(
+			field("token", $._switch),
+			$.rvalue,
+			$.statement,
 		),
 
-		rune_literal: _ => seq(
-			"'", /./, "'",
+		goto_statement: $ => seq(
+			field("token", $._goto),
+			field("name", $.rvalue),
+			";",
+		),
+
+		return_statement: $ => seq(
+			field("token", $._return),
+			optional(field("value", $.rvalue)),
+			";",
+		),
+
+		rvalue: $ => prec(3, choice(
+			seq("(", $.rvalue, ")"),
+			$.lvalue,
+			$.constant,
+			$.assignment,
+			$.increment,
+			$.reference,
+			$.logic,
+			$.math,
+			$.ternary,
+			$.call,
+		)),
+
+		assignment: $ => prec.left(0, seq(
+			$.lvalue, $.op_assign, $.rvalue,
+		)),
+
+		pre_increment: $ => prec.left(4, seq($.op_incdec, $.lvalue)),
+		post_increment: $ => seq($.lvalue, $.op_incdec),
+
+		increment: $ => choice($.pre_increment, $.post_increment),
+
+		reference: $ => prec(1, seq(
+			field("token", "&"), $.lvalue,
+		)),
+
+		logic: $ => prec(6, seq(
+			$.op_unary, $.rvalue
+		)),
+
+		math: $ => prec.left(2, seq(
+			$.rvalue, $.op_binary, $.rvalue,
+		)),
+
+		ternary: $ => prec.right(0, seq(
+			$.rvalue, field("token", "?"), $.rvalue, field("token", ":"), $.rvalue,
+		)),
+
+		number_literal: _ => prec(5, choice(
+			numLiteral, intLiteral, floatLiteral,
+		)),
+
+		rune_literal: $ => seq(
+			"'", choice(/[^\\]/, $.escape_sequence), "'",
 		),
 
 		string_literal: $ => seq(
@@ -170,6 +262,29 @@ module.exports = grammar({
 			),
 			'"',
 		),
+
+		call: $ => prec(10, seq(
+			$._name,
+			"(",
+			optional(named_join("parameter", $.rvalue, field("comma", ","))),
+			")",
+		)),
+
+		lvalue: $ => prec(1, choice(
+			$._name,
+			alias(seq("*", $.rvalue), $.dereference),
+			$.array_index,
+		)),
+
+		array_index: $ => prec(3, seq(
+			field("name", $.rvalue),
+			"[", field("value", $.rvalue), "]",
+		)),
+
+		constant: $ => choice(
+			$.number_literal, $.rune_literal, $.string_literal,
+		),
+
 		escape_sequence: _ => token(prec(1, seq(
 			'\\',
 			choice(
@@ -181,28 +296,50 @@ module.exports = grammar({
 			),
 		))),
 
-		const_literal: $ => choice(
-			$.number_literal, $.rune_literal, $.string_literal,
-		),
-
-		program: $ => repeat($.definition),
+		op_binary: _ => prec(7, choice(...op_Binary)),
+		op_unary: _ => choice(...op_Unary),
+		op_assign: $ => prec.right(1, seq("=", optional($.op_binary))),
+		op_incdec: _ => choice(...op_IncDec),
 
 		ival: $ => choice(
-			$.const_literal, $.identifier,
+			$._name, $.constant,
 		),
 
-		define_array: $ => seq(
-			field("name", $.identifier),
-			optional(seq(
-				"[", field("count", optional($.const_literal)), "]",
-			)),
-			named_join("value", $.ival, ",")
+		identifier: _ => /[\p{XID_Start}][\p{XID_Continue}]*/u,
+		global: $ => prec(5, choice(/[_A-Z][_A-Z0-9]*/, $._globals)),
+
+		// http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
+		comment: _ => token(choice(
+			seq('//', /.*/),
+			seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/"),
+		)),
+
+		stdlib: _ => prec(1, choice(
+			"char", "chdir", "chmod", "chown",
+			"close", "creat", "ctime", "execl",
+			"execv", "exit", "fork", "fstat",
+			"getchar", "getuid", "gtty", "lchar",
+			"link", "mkdir", "open", "printf",
+			"printn", "putchar", "read", "setuid",
+			"stat", "stty", "unlink", "wait",
+			"write", "main",
+		)),
+
+		c_stdlib: _ => prec(1, choice(
+			"malloc", "calloc", "ioctl", "usleep",
+			"memset", "memmove", "memcpy", "tcgetattr",
+			"tcsetattr", "rand", "srand", "time",
+		)),
+
+		_globals: _ => choice(
+			"args"
 		),
 
-		definition: $ => choice(
-			$.define_array,
-		),
-
-		source_file: $ => repeat($.definition),
+		_name: $ => field("name", choice(
+			$.global,
+			$.stdlib,
+			$.c_stdlib,
+			$.identifier,
+		)),
 	},
 });
