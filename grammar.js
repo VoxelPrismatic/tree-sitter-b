@@ -65,29 +65,40 @@ function join(rule, char) {
 	return seq(rule, repeat(seq(char, rule)));
 }
 
+/**
+ * @param name {String}
+ * @param rule {RuleOrLiteral}
+ * @param char {RuleOrLiteral}
+ * @returns {FieldRule}
+ */
+function named_join(name, rule, char) {
+	return field(name + "s", join(field(name, rule), char));
+}
+
 
 module.exports = grammar({
 	name: "b",
 
-	// word: $ => $.identifier,
+	word: $ => $.identifier,
 
 	extras: $ => [
+		// $.statement,
 		$.comment,
-		$.auto,
-		$.extrn,
-		$.op_assign,
-		$.op_incdec,
-		$.op_binary,
-		$.op_unary,
 		/\s/,
 	],
 
+	inline: $ => [
+		$.statement,
+		$._operator,
+	],
+
 	supertypes: $ => [
-		$._expression,
+		$.statement,
+		$._operator,
 	],
 
 	rules: {
-		identifier: _ => /[_\p{XID_Start}][_\p{XID_Continue}]*/u,
+		identifier: _ => /[a-zA-Z_][a-zA-Z0-9]*/,
 
 		// http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
 		comment: _ => token(choice(
@@ -96,21 +107,102 @@ module.exports = grammar({
 		)),
 
 		auto_statement: $ => seq(
-			$.auto, join($.identifier, ","), ";",
+			field("tok", token("auto")),
+			named_join("name", $.identifier, ","),
+			";",
 		),
 
-		auto: _ => "auto",
-		extrn: _ => "extrn",
-
-		_expression: $ => choice(
-			$.identifier,
-			$.auto,
-			$.extrn,
+		extrn_statement: $ => seq(
+			field("tok", token("extrn")),
+			named_join("name", $.identifier, ","),
+			";",
 		),
+
+		goto_statement: $ => seq(
+			field("tok", token("goto")),
+			field("name", $.identifier),
+			";"
+		),
+
+		label_statement: $ => seq(
+			field("name", $.identifier),
+			":",
+			$.statement,
+		),
+
+		block_statement: $ => seq(
+			"{", $.statement, "}",
+		),
+
+		statement: $ => choice(
+			$.goto_statement,
+			$.auto_statement,
+			$.extrn_statement,
+			$.label_statement,
+			$.block_statement,
+		),
+
 
 		op_binary: _ => choice(...op_Binary),
 		op_unary: _ => choice(...op_Unary),
 		op_assign: _ => choice(...op_Assign),
-		op_incdec: _ => choice(...op_IncDec)
+		op_incdec: _ => choice(...op_IncDec),
+		_operator: $ => alias(choice(
+			$.op_binary,
+			$.op_unary,
+			$.op_assign,
+			$.op_incdec,
+		), "operator"),
+
+		number_literal: _ => choice(
+			intLiteral, numLiteral,
+		),
+
+		rune_literal: _ => seq(
+			"'", /./, "'",
+		),
+
+		string_literal: $ => seq(
+			"\"",
+			choice(
+				alias(token.immediate(prec(1, /[^\\"\n]+/)), $.string_content),
+				$.escape_sequence,
+			),
+			'"',
+		),
+		escape_sequence: _ => token(prec(1, seq(
+			'\\',
+			choice(
+				/[^xuU]/,
+				/\d{2,3}/,
+				/x[0-9a-fA-F]{1,4}/,
+				/u[0-9a-fA-F]{4}/,
+				/U[0-9a-fA-F]{8}/,
+			),
+		))),
+
+		const_literal: $ => choice(
+			$.number_literal, $.rune_literal, $.string_literal,
+		),
+
+		program: $ => repeat($.definition),
+
+		ival: $ => choice(
+			$.const_literal, $.identifier,
+		),
+
+		define_array: $ => seq(
+			field("name", $.identifier),
+			optional(seq(
+				"[", field("count", optional($.const_literal)), "]",
+			)),
+			named_join("value", $.ival, ",")
+		),
+
+		definition: $ => choice(
+			$.define_array,
+		),
+
+		source_file: $ => repeat($.definition),
 	},
 });

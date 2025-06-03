@@ -1,179 +1,65 @@
 [
   {
+    "type": "auto_statement",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "names": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "tok": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "auto",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "identifier",
     "named": true,
     "root": true,
     "fields": {}
   },
   {
-    "type": "op_assign",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "op_binary",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "op_incdec",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "op_unary",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "!",
+    "type": ",",
     "named": false
   },
   {
-    "type": "!=",
-    "named": false
-  },
-  {
-    "type": "%",
-    "named": false
-  },
-  {
-    "type": "&",
-    "named": false
-  },
-  {
-    "type": "*",
-    "named": false
-  },
-  {
-    "type": "+",
-    "named": false
-  },
-  {
-    "type": "++",
-    "named": false
-  },
-  {
-    "type": "-",
-    "named": false
-  },
-  {
-    "type": "--",
-    "named": false
-  },
-  {
-    "type": "/",
-    "named": false
-  },
-  {
-    "type": "<",
-    "named": false
-  },
-  {
-    "type": "<<",
-    "named": false
-  },
-  {
-    "type": "<=",
-    "named": false
-  },
-  {
-    "type": "=",
-    "named": false
-  },
-  {
-    "type": "=0",
-    "named": false
-  },
-  {
-    "type": "=1",
-    "named": false
-  },
-  {
-    "type": "=10",
-    "named": false
-  },
-  {
-    "type": "=11",
-    "named": false
-  },
-  {
-    "type": "=12",
-    "named": false
-  },
-  {
-    "type": "=13",
-    "named": false
-  },
-  {
-    "type": "=14",
-    "named": false
-  },
-  {
-    "type": "=2",
-    "named": false
-  },
-  {
-    "type": "=3",
-    "named": false
-  },
-  {
-    "type": "=4",
-    "named": false
-  },
-  {
-    "type": "=5",
-    "named": false
-  },
-  {
-    "type": "=6",
-    "named": false
-  },
-  {
-    "type": "=7",
-    "named": false
-  },
-  {
-    "type": "=8",
-    "named": false
-  },
-  {
-    "type": "=9",
-    "named": false
-  },
-  {
-    "type": "==",
-    "named": false
-  },
-  {
-    "type": ">",
-    "named": false
-  },
-  {
-    "type": ">=",
-    "named": false
-  },
-  {
-    "type": ">>",
+    "type": ";",
     "named": false
   },
   {
     "type": "auto",
-    "named": true,
-    "extra": true
+    "named": false
   },
   {
     "type": "comment",
     "named": true,
     "extra": true
-  },
-  {
-    "type": "extrn",
-    "named": true,
-    "extra": true
-  },
-  {
-    "type": "|",
-    "named": false
   }
 ]

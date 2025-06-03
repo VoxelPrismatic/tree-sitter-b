@@ -1,10 +1,17 @@
-((identifier) @variable
-  (#set! priority 95))
+(auto_statement
+  tok: "auto" @keyword.type
+  name: (identifier) @variable)
 
-[
-  (auto)
-  (extrn)
-] @keyword.type
+(extrn
+  word: "extrn" @keyword.import
+  name: (identifier) @variable)
+
+(goto
+  word: "goto" @keyword
+  name: (identifier) @label)
+
+(jump_label
+  name: (identifier) @label)
 
 [
   (op_binary)
