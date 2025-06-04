@@ -26,6 +26,46 @@
     }
   },
   {
+    "type": "assembly",
+    "named": true,
+    "fields": {
+      "instruction": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      },
+      "instructions": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      },
+      "token": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "__asm__",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "assignment",
     "named": true,
     "fields": {},
@@ -620,6 +660,10 @@
         {
           "type": "program_c_wctype_h",
           "named": true
+        },
+        {
+          "type": "program_uxn",
+          "named": true
         }
       ]
     }
@@ -1213,6 +1257,21 @@
     }
   },
   {
+    "type": "program_uxn",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "reference",
     "named": true,
     "fields": {
@@ -1339,6 +1398,10 @@
       "required": true,
       "types": [
         {
+          "type": "assembly",
+          "named": true
+        },
+        {
           "type": "auto_statement",
           "named": true
         },
@@ -1388,20 +1451,31 @@
   {
     "type": "string_literal",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "escape_sequence",
-          "named": true
-        },
-        {
-          "type": "string_content",
-          "named": true
-        }
-      ]
+    "fields": {
+      "content": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "escape_sequence",
+            "named": true
+          },
+          {
+            "type": "string_content",
+            "named": true
+          }
+        ]
+      },
+      "quote": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "quote",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1506,10 +1580,6 @@
   },
   {
     "type": "!=",
-    "named": false
-  },
-  {
-    "type": "\"",
     "named": false
   },
   {
@@ -1649,6 +1719,10 @@
     "named": false
   },
   {
+    "type": "__asm__",
+    "named": false
+  },
+  {
     "type": "auto",
     "named": false
   },
@@ -1686,6 +1760,10 @@
   },
   {
     "type": "link_name",
+    "named": true
+  },
+  {
+    "type": "quote",
     "named": true
   },
   {

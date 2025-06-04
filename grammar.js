@@ -24,9 +24,6 @@ const op_Binary = [
 const op_Assign = op_Binary.map((_, v) => "=" + v);
 op_Assign.push("=");
 
-const newline = /\n/;
-const terminator = choice(newline, ";", "\0");
-
 const digit = {
 	hex: /[0-9a-fA-F]/,
 	oct: /[0-7]/,
@@ -97,6 +94,19 @@ function stdlib($, char) {
 	));
 }
 
+/**
+ * @param $ {GrammarSymbols.<any>}
+ * @param obj {Object.<string, SymbolRule.<any>>}
+ * @returns {Array.<AliasRule>}
+ */
+function stdlibs($, obj) {
+	let ret = [];
+	for (var key in obj) {
+		ret.push(alias(stdlib($, key), obj[key]));
+	}
+	return ret;
+}
+
 module.exports = grammar({
 	name: "b",
 
@@ -107,30 +117,32 @@ module.exports = grammar({
 	],
 
 	inline: $ => [
-		$.targets,
 		$._name,
 	],
 
 
 	rules: {
 		file: $ => choice(
-			alias(stdlib($, "assert.h"), $.program_c_assert_h),
-			alias(stdlib($, "ctype.h"), $.program_c_ctype_h),
-			alias(stdlib($, "langinfo.h"), $.program_c_langinfo_h),
-			alias(stdlib($, "locale.h"), $.program_c_locale_h),
-			alias(stdlib($, "math.h"), $.program_c_math_h),
-			alias(stdlib($, "nl_types.h"), $.program_c_nl_types_h),
-			alias(stdlib($, "regex.h"), $.program_c_regex_h),
-			alias(stdlib($, "setjmp.h"), $.program_c_setjmp_h),
-			alias(stdlib($, "signal.h"), $.program_c_signal_h),
-			alias(stdlib($, "stdarg.h"), $.program_c_stdarg_h),
-			alias(stdlib($, "stdio.h"), $.program_c_stdio_h),
-			alias(stdlib($, "stdlib.h"), $.program_c_stdlib_h),
-			alias(stdlib($, "string.h"), $.program_c_string_h),
-			alias(stdlib($, "strings.h"), $.program_c_strings_h),
-			alias(stdlib($, "time.h"), $.program_c_time_h),
-			alias(stdlib($, "wchar.h"), $.program_c_wchar_h),
-			alias(stdlib($, "wctype.h"), $.program_c_wctype_h),
+			...stdlibs($, {
+				"assert.h": $.program_c_assert_h,
+				"ctype.h": $.program_c_ctype_h,
+				"langinfo.h": $.program_c_langinfo_h,
+				"locale.h": $.program_c_locale_h,
+				"math.h": $.program_c_math_h,
+				"nl_types.h": $.program_c_nl_types_h,
+				"regex.h": $.program_c_regex_h,
+				"setjmp.h": $.program_c_setjmp_h,
+				"signal.h": $.program_c_signal_h,
+				"stdarg.h": $.program_c_stdarg_h,
+				"stdio.h": $.program_c_stdio_h,
+				"stdlib.h": $.program_c_stdlib_h,
+				"string.h": $.program_c_string_h,
+				"strings.h": $.program_c_strings_h,
+				"time.h": $.program_c_time_h,
+				"wchar.h": $.program_c_wchar_h,
+				"wctype.h": $.program_c_wctype_h,
+				"uxn": $.program_uxn,
+			}),
 			$.program,
 		),
 
@@ -178,6 +190,7 @@ module.exports = grammar({
 			$.switch_statement,
 			$.goto_statement,
 			$.return_statement,
+			$.assembly,
 			seq($.rvalue, ";"),
 		),
 
@@ -300,13 +313,15 @@ module.exports = grammar({
 		),
 
 		string_literal: $ => seq(
-			"\"",
-			choice(
+			field("quote", $.quote),
+			field("content", repeat(choice(
 				alias(token.immediate(prec(1, /[^\\"\n]+/)), $.string_content),
 				$.escape_sequence,
-			),
-			'"',
+			))),
+			field("quote", $.quote),
 		),
+
+		quote: _ => "\"",
 
 		call: $ => prec(10, seq(
 			$._name,
@@ -359,5 +374,10 @@ module.exports = grammar({
 		),
 
 		_name: $ => field("name", $.identifier),
+
+		assembly: $ => seq(
+			field("token", "__asm__"),
+			"(", named_join("instruction", $.string_literal, ","), ")", ";"
+		),
 	},
 });

@@ -10,7 +10,7 @@
 			"injection-regex": "^b$",
 			"class-name": "TreeSitterB",
 			"path": ".",
-			"highlights": "queries/highlights.scm"
+			"highlights": ["queries/highlights.scm", "queries/injections.scm"]
 		}
 	],
 	"metadata": {

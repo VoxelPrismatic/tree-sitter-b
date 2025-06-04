@@ -11,7 +11,11 @@
 
 ((identifier) @constant
   (#set! priority 103)
-  (#any-match? @constant "^[A-Z0-9_\\-]+$" "args"))
+  (#match? @constant "^[A-Z0-9_\\-]+$"))
+
+((identifier) @constant
+  (#set! priority 103)
+  (#match? @constant "args"))
 
 (comment) @comment
 
@@ -56,12 +60,6 @@
 
 (call
   name: (identifier) @function.method @function.method.call)
-
-[
-  ","
-  ":"
-  ";"
-] @keyword.delimeter
 
 ; Standard libraries
 ((identifier) @function.builtin

@@ -1146,6 +1146,73 @@
           "value": "program_c_wctype_h"
         },
         {
+          "type": "ALIAS",
+          "content": {
+            "type": "PREC",
+            "value": 2,
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "comment"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "FIELD",
+                        "name": "lhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "// -*- link:"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "target",
+                        "content": {
+                          "type": "STRING",
+                          "value": "uxn"
+                        }
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "rhs",
+                        "content": {
+                          "type": "STRING",
+                          "value": "-*-"
+                        }
+                      }
+                    ]
+                  },
+                  "named": true,
+                  "value": "linker"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "file"
+                }
+              ]
+            }
+          },
+          "named": true,
+          "value": "program_uxn"
+        },
+        {
           "type": "SYMBOL",
           "name": "program"
         }
@@ -1452,6 +1519,10 @@
         {
           "type": "SYMBOL",
           "name": "return_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "assembly"
         },
         {
           "type": "SEQ",
@@ -2908,39 +2979,58 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "\""
+          "type": "FIELD",
+          "name": "quote",
+          "content": {
+            "type": "SYMBOL",
+            "name": "quote"
+          }
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "IMMEDIATE_TOKEN",
-                "content": {
-                  "type": "PREC",
-                  "value": 1,
+          "type": "FIELD",
+          "name": "content",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
                   "content": {
-                    "type": "PATTERN",
-                    "value": "[^\\\\\"\\n]+"
-                  }
+                    "type": "IMMEDIATE_TOKEN",
+                    "content": {
+                      "type": "PREC",
+                      "value": 1,
+                      "content": {
+                        "type": "PATTERN",
+                        "value": "[^\\\\\"\\n]+"
+                      }
+                    }
+                  },
+                  "named": true,
+                  "value": "string_content"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "escape_sequence"
                 }
-              },
-              "named": true,
-              "value": "string_content"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "escape_sequence"
+              ]
             }
-          ]
+          }
         },
         {
-          "type": "STRING",
-          "value": "\""
+          "type": "FIELD",
+          "name": "quote",
+          "content": {
+            "type": "SYMBOL",
+            "name": "quote"
+          }
         }
       ]
+    },
+    "quote": {
+      "type": "STRING",
+      "value": "\""
     },
     "call": {
       "type": "PREC",
@@ -3318,6 +3408,68 @@
         "type": "SYMBOL",
         "name": "identifier"
       }
+    },
+    "assembly": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "token",
+          "content": {
+            "type": "STRING",
+            "value": "__asm__"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "FIELD",
+          "name": "instructions",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "instruction",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "string_literal"
+                }
+              },
+              {
+                "type": "REPEAT",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ","
+                    },
+                    {
+                      "type": "FIELD",
+                      "name": "instruction",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "string_literal"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
     }
   },
   "extras": [
