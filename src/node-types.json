@@ -171,6 +171,10 @@
       "required": false,
       "types": [
         {
+          "type": "comment",
+          "named": true
+        },
+        {
           "type": "statement",
           "named": true
         }
@@ -414,7 +418,260 @@
   {
     "type": "definition",
     "named": true,
-    "fields": {},
+    "fields": {
+      "lhs": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "program_c_assert_h",
+            "named": true
+          },
+          {
+            "type": "program_c_ctype_h",
+            "named": true
+          },
+          {
+            "type": "program_c_langinfo_h",
+            "named": true
+          },
+          {
+            "type": "program_c_locale_h",
+            "named": true
+          },
+          {
+            "type": "program_c_math_h",
+            "named": true
+          },
+          {
+            "type": "program_c_nl_types_h",
+            "named": true
+          },
+          {
+            "type": "program_c_regex_h",
+            "named": true
+          },
+          {
+            "type": "program_c_setjmp_h",
+            "named": true
+          },
+          {
+            "type": "program_c_signal_h",
+            "named": true
+          },
+          {
+            "type": "program_c_stdarg_h",
+            "named": true
+          },
+          {
+            "type": "program_c_stdio_h",
+            "named": true
+          },
+          {
+            "type": "program_c_stdlib_h",
+            "named": true
+          },
+          {
+            "type": "program_c_string_h",
+            "named": true
+          },
+          {
+            "type": "program_c_strings_h",
+            "named": true
+          },
+          {
+            "type": "program_c_time_h",
+            "named": true
+          },
+          {
+            "type": "program_c_wchar_h",
+            "named": true
+          },
+          {
+            "type": "program_c_wctype_h",
+            "named": true
+          },
+          {
+            "type": "program_nil",
+            "named": true
+          },
+          {
+            "type": "program_uxn",
+            "named": true
+          }
+        ]
+      },
+      "nil_target": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "program_nil",
+            "named": true
+          }
+        ]
+      },
+      "rhs": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "program_c_assert_h",
+            "named": true
+          },
+          {
+            "type": "program_c_ctype_h",
+            "named": true
+          },
+          {
+            "type": "program_c_langinfo_h",
+            "named": true
+          },
+          {
+            "type": "program_c_locale_h",
+            "named": true
+          },
+          {
+            "type": "program_c_math_h",
+            "named": true
+          },
+          {
+            "type": "program_c_nl_types_h",
+            "named": true
+          },
+          {
+            "type": "program_c_regex_h",
+            "named": true
+          },
+          {
+            "type": "program_c_setjmp_h",
+            "named": true
+          },
+          {
+            "type": "program_c_signal_h",
+            "named": true
+          },
+          {
+            "type": "program_c_stdarg_h",
+            "named": true
+          },
+          {
+            "type": "program_c_stdio_h",
+            "named": true
+          },
+          {
+            "type": "program_c_stdlib_h",
+            "named": true
+          },
+          {
+            "type": "program_c_string_h",
+            "named": true
+          },
+          {
+            "type": "program_c_strings_h",
+            "named": true
+          },
+          {
+            "type": "program_c_time_h",
+            "named": true
+          },
+          {
+            "type": "program_c_wchar_h",
+            "named": true
+          },
+          {
+            "type": "program_c_wctype_h",
+            "named": true
+          },
+          {
+            "type": "program_nil",
+            "named": true
+          },
+          {
+            "type": "program_uxn",
+            "named": true
+          }
+        ]
+      },
+      "target": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "program_c_assert_h",
+            "named": true
+          },
+          {
+            "type": "program_c_ctype_h",
+            "named": true
+          },
+          {
+            "type": "program_c_langinfo_h",
+            "named": true
+          },
+          {
+            "type": "program_c_locale_h",
+            "named": true
+          },
+          {
+            "type": "program_c_math_h",
+            "named": true
+          },
+          {
+            "type": "program_c_nl_types_h",
+            "named": true
+          },
+          {
+            "type": "program_c_regex_h",
+            "named": true
+          },
+          {
+            "type": "program_c_setjmp_h",
+            "named": true
+          },
+          {
+            "type": "program_c_signal_h",
+            "named": true
+          },
+          {
+            "type": "program_c_stdarg_h",
+            "named": true
+          },
+          {
+            "type": "program_c_stdio_h",
+            "named": true
+          },
+          {
+            "type": "program_c_stdlib_h",
+            "named": true
+          },
+          {
+            "type": "program_c_string_h",
+            "named": true
+          },
+          {
+            "type": "program_c_strings_h",
+            "named": true
+          },
+          {
+            "type": "program_c_time_h",
+            "named": true
+          },
+          {
+            "type": "program_c_wchar_h",
+            "named": true
+          },
+          {
+            "type": "program_c_wctype_h",
+            "named": true
+          },
+          {
+            "type": "program_uxn",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": true,
@@ -433,6 +690,82 @@
         },
         {
           "type": "define_function",
+          "named": true
+        },
+        {
+          "type": "program_c_assert_h",
+          "named": true
+        },
+        {
+          "type": "program_c_ctype_h",
+          "named": true
+        },
+        {
+          "type": "program_c_langinfo_h",
+          "named": true
+        },
+        {
+          "type": "program_c_locale_h",
+          "named": true
+        },
+        {
+          "type": "program_c_math_h",
+          "named": true
+        },
+        {
+          "type": "program_c_nl_types_h",
+          "named": true
+        },
+        {
+          "type": "program_c_regex_h",
+          "named": true
+        },
+        {
+          "type": "program_c_setjmp_h",
+          "named": true
+        },
+        {
+          "type": "program_c_signal_h",
+          "named": true
+        },
+        {
+          "type": "program_c_stdarg_h",
+          "named": true
+        },
+        {
+          "type": "program_c_stdio_h",
+          "named": true
+        },
+        {
+          "type": "program_c_stdlib_h",
+          "named": true
+        },
+        {
+          "type": "program_c_string_h",
+          "named": true
+        },
+        {
+          "type": "program_c_strings_h",
+          "named": true
+        },
+        {
+          "type": "program_c_time_h",
+          "named": true
+        },
+        {
+          "type": "program_c_wchar_h",
+          "named": true
+        },
+        {
+          "type": "program_c_wctype_h",
+          "named": true
+        },
+        {
+          "type": "program_nil",
+          "named": true
+        },
+        {
+          "type": "program_uxn",
           "named": true
         }
       ]
@@ -547,125 +880,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "file",
-    "named": true,
-    "root": true,
-    "fields": {
-      "lhs": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "linker",
-            "named": true
-          }
-        ]
-      },
-      "rhs": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "linker",
-            "named": true
-          }
-        ]
-      },
-      "target": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "linker",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "program",
-          "named": true
-        },
-        {
-          "type": "program_c_assert_h",
-          "named": true
-        },
-        {
-          "type": "program_c_ctype_h",
-          "named": true
-        },
-        {
-          "type": "program_c_langinfo_h",
-          "named": true
-        },
-        {
-          "type": "program_c_locale_h",
-          "named": true
-        },
-        {
-          "type": "program_c_math_h",
-          "named": true
-        },
-        {
-          "type": "program_c_nl_types_h",
-          "named": true
-        },
-        {
-          "type": "program_c_regex_h",
-          "named": true
-        },
-        {
-          "type": "program_c_setjmp_h",
-          "named": true
-        },
-        {
-          "type": "program_c_signal_h",
-          "named": true
-        },
-        {
-          "type": "program_c_stdarg_h",
-          "named": true
-        },
-        {
-          "type": "program_c_stdio_h",
-          "named": true
-        },
-        {
-          "type": "program_c_stdlib_h",
-          "named": true
-        },
-        {
-          "type": "program_c_string_h",
-          "named": true
-        },
-        {
-          "type": "program_c_strings_h",
-          "named": true
-        },
-        {
-          "type": "program_c_time_h",
-          "named": true
-        },
-        {
-          "type": "program_c_wchar_h",
-          "named": true
-        },
-        {
-          "type": "program_c_wctype_h",
-          "named": true
-        },
-        {
-          "type": "program_uxn",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -806,42 +1020,6 @@
     }
   },
   {
-    "type": "linker",
-    "named": true,
-    "fields": {
-      "lhs": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "// -*- link:",
-            "named": false
-          }
-        ]
-      },
-      "rhs": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "-*-",
-            "named": false
-          }
-        ]
-      },
-      "target": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "link_name",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "logic",
     "named": true,
     "fields": {},
@@ -915,36 +1093,6 @@
     "fields": {}
   },
   {
-    "type": "op_assign",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "op_binary",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "op_binary",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "op_incdec",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "op_unary",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "post_increment",
     "named": true,
     "fields": {},
@@ -985,6 +1133,7 @@
   {
     "type": "program",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -992,10 +1141,6 @@
       "types": [
         {
           "type": "definition",
-          "named": true
-        },
-        {
-          "type": "linker",
           "named": true
         }
       ]
@@ -1007,10 +1152,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1022,10 +1167,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1037,10 +1182,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1052,10 +1197,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1067,10 +1212,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1082,10 +1227,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1097,10 +1242,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1112,10 +1257,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1127,10 +1272,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1142,10 +1287,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1157,10 +1302,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1172,10 +1317,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1187,10 +1332,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1202,10 +1347,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1217,10 +1362,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1232,10 +1377,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1247,10 +1392,25 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "program_nil",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "program",
           "named": true
         }
       ]
@@ -1262,10 +1422,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "comment",
+          "type": "program",
           "named": true
         }
       ]
@@ -1333,6 +1493,10 @@
       "types": [
         {
           "type": "escape_sequence",
+          "named": true
+        },
+        {
+          "type": "format_sequence",
           "named": true
         }
       ]
@@ -1461,6 +1625,10 @@
             "named": true
           },
           {
+            "type": "format_sequence",
+            "named": true
+          },
+          {
             "type": "string_content",
             "named": true
           }
@@ -1575,18 +1743,6 @@
     }
   },
   {
-    "type": "!",
-    "named": false
-  },
-  {
-    "type": "!=",
-    "named": false
-  },
-  {
-    "type": "%",
-    "named": false
-  },
-  {
     "type": "&",
     "named": false
   },
@@ -1603,15 +1759,7 @@
     "named": false
   },
   {
-    "type": "*",
-    "named": false
-  },
-  {
     "type": "+",
-    "named": false
-  },
-  {
-    "type": "++",
     "named": false
   },
   {
@@ -1620,14 +1768,6 @@
   },
   {
     "type": "-",
-    "named": false
-  },
-  {
-    "type": "-*-",
-    "named": false
-  },
-  {
-    "type": "--",
     "named": false
   },
   {
@@ -1647,14 +1787,6 @@
     "named": false
   },
   {
-    "type": "// -*- link:",
-    "named": false
-  },
-  {
-    "type": "0",
-    "named": false
-  },
-  {
     "type": ":",
     "named": false
   },
@@ -1663,47 +1795,7 @@
     "named": false
   },
   {
-    "type": "<",
-    "named": false
-  },
-  {
-    "type": "<<",
-    "named": false
-  },
-  {
-    "type": "<=",
-    "named": false
-  },
-  {
-    "type": "=",
-    "named": false
-  },
-  {
-    "type": "==",
-    "named": false
-  },
-  {
-    "type": ">",
-    "named": false
-  },
-  {
-    "type": ">=",
-    "named": false
-  },
-  {
-    "type": ">>",
-    "named": false
-  },
-  {
     "type": "?",
-    "named": false
-  },
-  {
-    "type": "B",
-    "named": false
-  },
-  {
-    "type": "X",
     "named": false
   },
   {
@@ -1715,19 +1807,11 @@
     "named": false
   },
   {
-    "type": "_",
-    "named": false
-  },
-  {
     "type": "__asm__",
     "named": false
   },
   {
     "type": "auto",
-    "named": false
-  },
-  {
-    "type": "b",
     "named": false
   },
   {
@@ -1747,6 +1831,10 @@
     "named": false
   },
   {
+    "type": "format_sequence",
+    "named": true
+  },
+  {
     "type": "goto",
     "named": false
   },
@@ -1759,7 +1847,19 @@
     "named": false
   },
   {
-    "type": "link_name",
+    "type": "op_assign",
+    "named": true
+  },
+  {
+    "type": "op_binary",
+    "named": true
+  },
+  {
+    "type": "op_incdec",
+    "named": true
+  },
+  {
+    "type": "op_unary",
     "named": true
   },
   {
@@ -1783,15 +1883,7 @@
     "named": false
   },
   {
-    "type": "x",
-    "named": false
-  },
-  {
     "type": "{",
-    "named": false
-  },
-  {
-    "type": "|",
     "named": false
   },
   {

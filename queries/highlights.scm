@@ -1,10 +1,12 @@
-(_
-  lhs: (linker) @comment
-  target: (linker) @markup.strong @diff.plus
-  rhs: (linker) @comment)
+(definition
+  lhs: (_) @comment
+  target: (_) @markup.strong @diff.plus
+  rhs: (_) @comment)
 
-(linker
-  target: (link_name) @markup.strong @diff.minus) @comment
+(definition
+  lhs: (_) @comment
+  nil_target: (_) @markup.strong @diff.minus
+  rhs: (_) @comment)
 
 ((identifier) @variable
   (#set! priority 95))
@@ -13,9 +15,9 @@
   (#set! priority 103)
   (#match? @constant "^[A-Z0-9_\\-]+$"))
 
-((identifier) @constant
+((identifier) @variable.parameter
   (#set! priority 103)
-  (#match? @constant "args"))
+  (#any-of? @variable.parameter "args" "stderr" "stdout" "stdin"))
 
 (comment) @comment
 
@@ -23,6 +25,8 @@
   "auto"
   "extrn"
 ] @keyword.type
+
+"__asm__" @keyword.directive
 
 "return" @keyword.return
 
@@ -51,7 +55,12 @@
 
 (rune_literal) @character
 
-(string_literal) @string
+((string_literal) @string
+  (#not-has-ancestor? @string assembly))
+
+(escape_sequence) @string.escape
+
+(format_sequence) @string.escape
 
 (number_literal) @number
 
@@ -69,9 +78,15 @@
     "getchar" "getuid" "gtty" "lchar" "link" "mkdir" "open" "printf" "printn" "putchar" "read"
     "setuid" "stat" "stty" "unlink" "wait" "write" "main"))
 
+; https://wiki.xxiivv.com/site/uxntal_reference.html
 ((identifier) @function.builtin
   (#set! priority 105)
-  (#any-of? @function.builtin "assert")
+  (#match? @function.builtin "^uxn_(nip|dup|dei|ovr|deo|sth|swp)2?k?r?$")
+  (#has-ancestor? @function.builtin program_uxn))
+
+((identifier) @function.builtin
+  (#set! priority 105)
+  (#any-of? @function.builtin "assert" "assert_equal")
   (#has-ancestor? @function.builtin program_c_assert_h))
 
 ((identifier) @function.builtin
@@ -185,3 +200,7 @@
     "iswprint4" "iswpunct4" "iswspace4" "iswupper4" "iswxdigit4" "isxdigit4" "towctrans" "towlower4"
     "towupper4" "wctrans")
   (#has-ancestor? @function.builtin program_c_wctype_h))
+
+(assembly
+  instruction: (string_literal
+    quote: (quote) @string.regexp))

@@ -1,8 +1,20 @@
-// -*- link: uxn -*-
+// -*- link: stdio.h -*-
+// -*- link: nob.h -*-
+//
 
 main() {
+
+	uxn_ovr2kr("hello\x122d1da \ x %llizdd  jlek");
+	call(
+	);
+
 	__asm__(
-		"#0a DUP ?label INC @label ( 0a )",
-		"#0a dup ?label inc @label ( 0a )"
+		"main:",
+			"push rbp",
+			"mov rbp, rsp",
+			"sub rsp, 32",
+			"movabs rax, 738",
+			"movabs",
+
 	);
 }
