@@ -1,11 +1,11 @@
 (definition
   lhs: (_) @comment
-  target: (_) @markup.strong @diff.plus
+  target: (_) @comment.info
   rhs: (_) @comment)
 
 (definition
   lhs: (_) @comment
-  nil_target: (_) @markup.strong @diff.minus
+  nil_target: (_) @comment.error
   rhs: (_) @comment)
 
 ((identifier) @variable
