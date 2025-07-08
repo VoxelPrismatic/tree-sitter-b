@@ -2201,21 +2201,20 @@
           "value": "'"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": "[^\\\\]"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "format_sequence"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "escape_sequence"
-            }
-          ]
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "escape_sequence"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^\\\\']+"
+              }
+            ]
+          }
         },
         {
           "type": "STRING",

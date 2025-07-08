@@ -424,7 +424,12 @@ module.exports = grammar({
 		rune_literal: ($) =>
 			seq(
 				"'",
-				choice(/[^\\]/, $.format_sequence, $.escape_sequence),
+				repeat(
+					choice(
+						$.escape_sequence,
+						/[^\\']+/,
+					),
+				),
 				"'",
 			),
 
