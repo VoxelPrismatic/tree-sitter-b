@@ -9,14 +9,14 @@
   rhs: (_) @comment)
 
 ((identifier) @variable
-  (#set! priority 95))
+  (#set! priority 100))
 
 ((identifier) @constant
-  (#set! priority 103)
+  (#set! priority 100)
   (#match? @constant "^[A-Z0-9_\\-]+$"))
 
 ((identifier) @variable.parameter
-  (#set! priority 103)
+  (#set! priority 100)
   (#any-of? @variable.parameter "args" "stderr" "stdout" "stdin"))
 
 (comment) @comment
